@@ -1,0 +1,12 @@
+/* TEAM */
+	Developer: Kim
+	
+/* THANKS */
+	淘宝小哥
+	Site: www.taobao.com
+	
+/* SITE */
+	Last update:2017/10/31
+	Language: English / Chinese
+	Doctype:HTML5
+	IDE: Sublime Text, Notepad++, HBuilder

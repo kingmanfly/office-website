@@ -1,0 +1,138 @@
+Robots协议（也称为爬虫协议、机器人协议等）的全称是“网络爬虫排除标准”（Robots Exclusion Protocol），网站通过Robots协议告诉搜索引擎哪些页面可以抓取，哪些页面不能抓取。
+
+当一个搜索蜘蛛访问一个站点时，它会首先检查该站点根目录下是否存在robots.txt，如果存在，搜索机器人就会按照该文件中的内容来确定访问的范围；如果该文件不存在，所有的搜索蜘蛛将能够访问网站上所有没有被口令保护的页面。百度官方建议，仅当您的网站包含不希望被搜索引擎收录的内容时，才需要使用robots.txt文件。如果您希望搜索引擎收录网站上所有内容，请勿建立robots.txt文件。
+
+如果将网站视为酒店里的一个房间，robots.txt就是主人在房间门口悬挂的“请勿打扰”或“欢迎打扫”的提示牌。这个文件告诉来访的搜索引擎哪些房间可以进入和参观，哪些房间因为存放贵重物品，或可能涉及住户及访客的隐私而不对搜索引擎开放。但robots.txt不是命令，也不是防火墙，如同守门人无法阻止窃贼等恶意闯入者。
+
+Robots协议是国际互联网界通行的道德规范，基于以下原则建立：
+1、搜索技术应服务于人类，同时尊重信息提供者的意愿，并维护其隐私权；
+2、网站有义务保护其使用者的个人信息和隐私不被侵犯。
+
+文件写法
+User-agent: * 这里的*代表的所有的搜索引擎种类，*是一个通配符
+Disallow: /admin/ 这里定义是禁止爬寻admin目录下面的目录
+Disallow: /require/ 这里定义是禁止爬寻require目录下面的目录
+Disallow: /ABC/ 这里定义是禁止爬寻ABC目录下面的目录
+Disallow: /cgi-bin/*.htm 禁止访问/cgi-bin/目录下的所有以".htm"为后缀的URL(包含子目录)。
+Disallow: /*?* 禁止访问网站中所有包含问号 (?) 的网址
+Disallow: /.jpg$ 禁止抓取网页所有的.jpg格式的图片
+Disallow:/ab/adc.html 禁止爬取ab文件夹下面的adc.html文件。
+Allow: /cgi-bin/　这里定义是允许爬寻cgi-bin目录下面的目录
+Allow: /tmp 这里定义是允许爬寻tmp的整个目录
+Allow: .htm$ 仅允许访问以".htm"为后缀的URL。
+Allow: .gif$ 允许抓取网页和gif格式图片
+Sitemap: 网站地图 告诉爬虫这个页面是网站地图
+
+
+文件用法
+robots.txt文件用法举例：
+
+1. 允许所有的robot访问
+
+User-agent: * Allow: / 或者 User-agent: * Disallow:
+
+2. 禁止所有搜索引擎访问网站的任何部分
+
+User-agent: *
+
+Disallow: /
+
+3. 仅禁止Baiduspider访问您的网站
+
+User-agent: Baiduspider
+
+Disallow: /
+
+4. 仅允许Baiduspider访问您的网站
+
+User-agent: Baiduspider
+
+Disallow:
+
+5. 禁止spider访问特定目录
+
+User-agent: *
+
+Disallow: /cgi-bin/
+
+Disallow: /tmp/
+
+Disallow: /~joe/
+
+6. 允许访问特定目录中的部分url
+
+User-agent: *
+
+Allow: /cgi-bin/see
+
+Allow: /tmp/hi
+
+Allow: /~joe/look
+
+Disallow: /cgi-bin/
+
+Disallow: /tmp/
+
+Disallow: /~joe/
+
+7. 使用”*”限制访问url
+
+禁止访问/cgi-bin/目录下的所有以”.htm”为后缀的URL(包含子目录)。
+
+User-agent: *
+
+Disallow: /cgi-bin/*.htm
+
+8. 使用”$”限制访问url
+
+仅允许访问以”.htm”为后缀的URL。
+
+User-agent: *
+
+Allow: .htm$
+
+Disallow: /
+
+例9. 禁止访问网站中所有的动态页面
+
+User-agent: *
+
+Disallow: /*?*
+
+10. 禁止Baiduspider抓取网站上所有图片
+
+仅允许抓取网页，禁止抓取任何图片。
+
+User-agent: Baiduspider
+
+Disallow: .jpg$
+
+Disallow: .jpeg$
+
+Disallow: .gif$
+
+Disallow: .png$
+
+Disallow: .bmp$
+
+11. 仅允许Baiduspider抓取网页和.gif格式图片
+
+允许抓取网页和gif格式图片，不允许抓取其他格式图片
+
+User-agent: Baiduspider
+
+Allow: .gif$
+
+Disallow: .jpg$
+
+Disallow: .jpeg$
+
+Disallow: .png$
+
+Disallow: .bmp$
+
+12. 仅禁止Baiduspider抓取.jpg格式图片
+
+User-agent: Baiduspider
+
+Disallow: .jpg$
