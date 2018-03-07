@@ -61,9 +61,7 @@ body{
 /*home*/
 #introduce{
 	margin-top: 70px;
-	background: url(../img/home-bg.jpg);
-	background-size: cover;
-	color: #FFFFFF;
+	
 	text-align: center;
 	width: 100%;
 }
